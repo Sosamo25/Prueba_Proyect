@@ -15,7 +15,7 @@ const connection = mysql.createConnection({
     host: 'localhost',
     user: 'root',
     password: 'root',
-    database: 'crud_proyecto'
+    database: 'InteligenciasMultiples'
 });
 
 connection.connect(err => {

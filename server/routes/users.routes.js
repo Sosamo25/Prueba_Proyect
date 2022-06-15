@@ -21,6 +21,7 @@ app.route('/users')
 
 .delete((req, res) => {
     cUsers.deleteUsers(connection, req, res);
-});
+})
+
 
 }

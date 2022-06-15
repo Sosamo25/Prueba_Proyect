@@ -20,24 +20,23 @@ class Users extends React.Component {
         modalCrear: false,
         modalActualizar: false,
 
-        //Para actualizar
+        //Areglo campos para  crear y actualizar
         users: {
-            id: {
+            ID: {
                 original: '',
                 nuevo: ''
             },
-            documentType: '',
-            Document: '',
-            user: '',
-            name: '',
-            lastName: '',
-            rol: '',
-            pass: '',
-            Title: '',
-            titleArea: ''
+            correoInstitucional: '',
+            password: '',
+            tipoDocumento: '',
+            numDocumento: '',
+            nombre: '',
+            apellido: '',
+            cargo: '',
+            areaCargo: '',
+            perfilCargo: ''
         },
 
-        
     };
 
 
@@ -82,19 +81,19 @@ class Users extends React.Component {
         this.setState(
             {
                 users: {
-                    id: {
-                        ...this.state.users.id,
+                    ID: {
+                        ...this.state.users.ID,
                         nuevo: ''
                     },
-                    documentType: '',
-                    Document: '',
-                    user: '',
-                    name: '',
-                    lastName: '',
-                    rol: '',
-                    pass: '',
-                    Title: '',
-                    titleArea: ''
+                    correoInstitucional: '',
+                    password: '',
+                    tipoDocumento: '',
+                    numDocumento: '',
+                    nombre: '',
+                    apellido: '',
+                    cargo: '',
+                    areaCargo: '',
+                    perfilCargo: ''
                 },
                 modalActualizar:false
             }
@@ -106,111 +105,111 @@ class Users extends React.Component {
     setUsers = (usuario) => {
         this.setState({
             users: {
-                id: usuario.id,
-                documentType: usuario.documentType,
-                Document: usuario.Document,
-                user: usuario.user,
-                name: usuario.name,
-                lastName: usuario.lastName,
-                rol: usuario.rol,
-                pass: usuario.pass,
-                Title: usuario.Title,
-                titleArea: usuario.titleArea
+                ID: usuario.ID,
+                correoInstitucional: usuario.correoInstitucional,
+                password: usuario.password,
+                tipoDocumento: usuario.tipoDocumento,
+                numDocumento: usuario.numDocumento,
+                nombre: usuario.nombre,
+                apellido: usuario.apellido,
+                cargo: usuario.cargo,
+                areaCargo: usuario.areaCargo,
+                perfilCargo: usuario.perfilCargo
             }
         })
     }
 
 
-    //Steters para actualizar y crear 
+    //Setters para actualizar y crear 
     setId = (event) => {
         this.setState({
             users: {
                 ...this.state.users,
-                id: {
-                    ...this.state.users.id,
+                ID: {
+                    ...this.state.users.ID,
                     nuevo: event.target.value
                 }
             }
         });
     };
 
-    setDocumentType = (event) => {
+    setCorreoInstitucional = (event) => {
         this.setState({
             users: {
                 ...this.state.users,
-                documentType: event.target.value,
+                correoInstitucional: event.target.value,
             }
         });
     };
 
-    setDocument = (event) => {
+    setPassword = (event) => {
         this.setState({
             users: {
                 ...this.state.users,
-                Document: event.target.value,
+                password: event.target.value,
             }
         });
     };
 
-    setUser = (event) => {
+    setTipoDocumento = (event) => {
         this.setState({
             users: {
                 ...this.state.users,
-                user: event.target.value,
+                tipoDocumento: event.target.value,
             }
         });
     };
 
-    setName = (event) => {
+    setNumDocumento = (event) => {
         this.setState({
             users: {
                 ...this.state.users,
-                name: event.target.value,
+                numDocumento: event.target.value,
             }
         });
     };
 
-    setLastName = (event) => {
+    setNombre = (event) => {
         this.setState({
             users: {
                 ...this.state.users,
-                lastName: event.target.value,
+                nombre: event.target.value,
             }
         });
     };
 
-    setRol = (event) => {
+    setApellido = (event) => {
         this.setState({
             users: {
                 ...this.state.users,
-                rol: event.target.value,
+                apellido: event.target.value,
             }
         });
     };
 
-    setPass = (event) => {
+    setCargo = (event) => {
         this.setState({
             users: {
                 ...this.state.users,
-                pass: event.target.value,
+                cargo: event.target.value,
             }
         });
     };
 
-    setTitle = (event) => {
+    setAreaCargo = (event) => {
         this.setState({
             users: {
                 ...this.state.users,
-                Title: event.target.value,
+                areaCargo: event.target.value,
             }
         });
     };
 
-    setTitleArea = (event) => {
+    setPerfilCargo = (event) => {
         this.setState({
             users: {
                 ...this.state.users,
-                titleArea: event.target.value,
+                perfilCargo: event.target.value,
             }
         });
     };
@@ -218,42 +217,43 @@ class Users extends React.Component {
     //---------------------------------------
 
     agregarUsuario = () => {
-        let id = this.state.users.id.nuevo;
-        let documentType = this.state.users.documentType;
-        let Document = this.state.users.Document;
-        let user = this.state.users.user;
-        let name = this.state.users.name;
-        let lastName = this.state.users.lastName;
-        let rol = this.state.users.rol;
-        let pass = this.state.users.pass;
-        let Title = this.state.users.Title;
-        let titleArea = this.state.users.titleArea;
+        let ID = this.state.users.ID.nuevo;
+        let correoInstitucional = this.state.users.correoInstitucional;
+        let password = this.state.users.password;
+        let tipoDocumento = this.state.users.tipoDocumento;
+        let numDocumento = this.state.users.numDocumento;
+        let nombre = this.state.users.nombre;
+        let apellido = this.state.users.apellido;
+        let cargo = this.state.users.cargo;
+        let areaCargo = this.state.users.areaCargo;
+        let perfilCargo = this.state.users.perfilCargo;
 
-        if (id === '' || documentType === '' || Document === '' || user === ''
-            || name === '' || lastName === '' || rol === '' || pass === '' || Title === ''
-            || titleArea === '') {
+        if (ID === '' || correoInstitucional === '' || password === '' || tipoDocumento === ''
+            || numDocumento === '' || nombre === '' || apellido === '' || cargo === '' || areaCargo === ''
+            || perfilCargo === '') {
             alert('Por favor digita todos los campos obligatorios para agregar el empleado.')
         } else {
-            UsuariosService.postUsers(id, documentType, Document, user, name, lastName, rol, pass, Title, titleArea)
+            UsuariosService.postUsers(ID, correoInstitucional, password, tipoDocumento, numDocumento, nombre, apellido, cargo, areaCargo, perfilCargo)
                 .then(datos => {
+                    console.log(datos);
                     alert('¡Se ha creado el usuario con exito!');
 
                     let nuevoLosusers = this.state.Losusers;
                     nuevoLosusers.push(
                         {
-                            id: {
-                                original: id,
-                                nuevo: id
+                            ID: {
+                                original: ID,
+                                nuevo: ID
                             },
-                            documentType,
-                            Document,
-                            user,
-                            name,
-                            lastName,
-                            rol,
-                            pass,
-                            Title,
-                            titleArea
+                            correoInstitucional,
+                            password,
+                            tipoDocumento,
+                            numDocumento,
+                            nombre,
+                            apellido,
+                            cargo,
+                            areaCargo,
+                            perfilCargo
                         }
                     );
 
@@ -270,24 +270,24 @@ class Users extends React.Component {
     };
 
     editarUsers = () => {
-        let id = this.state.users.id.original;
-        let nuevoid = this.state.users.id.nuevo;
-        let documentType = this.state.users.documentType;
-        let Document = this.state.users.Document;
-        let user = this.state.users.user;
-        let name = this.state.users.name;
-        let lastName = this.state.users.lastName;
-        let rol = this.state.users.rol;
-        let pass = this.state.users.pass;
-        let Title = this.state.users.Title;
-        let titleArea = this.state.users.titleArea;
+        let ID = this.state.users.ID.original;
+        let nuevoid = this.state.users.ID.nuevo;
+        let correoInstitucional = this.state.users.correoInstitucional;
+        let password = this.state.users.password;
+        let tipoDocumento = this.state.users.tipoDocumento;
+        let numDocumento = this.state.users.numDocumento;
+        let nombre = this.state.users.nombre;
+        let apellido = this.state.users.apellido;
+        let cargo = this.state.users.cargo;
+        let areaCargo = this.state.users.areaCargo;
+        let perfilCargo = this.state.users.perfilCargo;
 
-        UsuariosService.putUsers( id, nuevoid, documentType, Document, user, name, lastName, rol, pass, Title, titleArea)
+        UsuariosService.putUsers( ID, nuevoid, correoInstitucional, password, tipoDocumento, numDocumento, nombre, apellido, cargo, areaCargo, perfilCargo )
         .then(datos => {
             console.log(datos);
             alert('Los datos han sido actualizados con éxito!');
             this.componentDidMount();
-            this.cerrarModalCrear();
+            this.cerrarModalActualizar();
         })
         .catch(err => {
             console.log(err);
@@ -296,10 +296,10 @@ class Users extends React.Component {
     };
 
     elimminarUsers = (usuario) => {
-        let seguro = window.confirm("Estas seguro que deseas eliminar este usuario" + usuario.user + "?");
+        let seguro = window.confirm("Estas seguro que deseas eliminar este usuario" + usuario.correoInstitucional + "?");
 
         if (seguro) {
-            UsuariosService.deleteUsers(usuario.id.original)
+            UsuariosService.deleteUsers(usuario.ID.original)
             .then(datos => {
                 console.log(datos);
                 alert('¡El usuario ha sido eliminado con éxito!');
@@ -337,10 +337,10 @@ class Users extends React.Component {
                                     <th>Tipo Documento</th>
                                     <th>Numero documento</th>
                                     <th>Correo</th>
+                                    <th>Contraseña</th>
                                     <th>Nombres</th>
                                     <th>Apellidos</th>
                                     <th>Rol</th>
-                                    <th>Contraseña</th>
                                     <th>Titulo</th>
                                     <th>TitleArea</th>
                                     <th className="text-center"> ACCIONES</th>
@@ -351,16 +351,16 @@ class Users extends React.Component {
                                 {
                                     this.state.Losusers.map((usuario, id) =>(
                                         <tr key={id}>
-                                            <td>{usuario.id.original}</td>
-                                            <td>{usuario.documentType}</td>
-                                            <td>{usuario.Document}</td>
-                                            <td>{usuario.user}</td>
-                                            <td>{usuario.name}</td>
-                                            <td>{usuario.lastName}</td>
-                                            <td>{usuario.rol}</td>
-                                            <td>{usuario.pass}</td>
-                                            <td>{usuario.Title}</td>
-                                            <td>{usuario.titleArea}</td>
+                                            <td>{usuario.ID.original}</td>
+                                            <td>{usuario.tipoDocumento}</td>
+                                            <td>{usuario.numDocumento}</td>
+                                            <td>{usuario.correoInstitucional}</td>
+                                            <td>{usuario.password}</td>
+                                            <td>{usuario.nombre}</td>
+                                            <td>{usuario.apellido}</td>
+                                            <td>{usuario.cargo}</td>
+                                            <td>{usuario.perfilCargo}</td>
+                                            <td>{usuario.areaCargo}</td>
                                             <td>
                                                 <div className="d-flex justify-content-center">
                                                 <Button className="btn btn-primary me-2 text-capitalize"  onClick={() => this.mostrarModalActualizar(usuario)} role="button">Editar</Button>
@@ -386,57 +386,57 @@ class Users extends React.Component {
                     </ModalHeader>
                     <ModalBody>
                     <FormGroup>
-                            <Label for="id">  </Label>
-                            <Input type="number" id="id" onChange={this.setId} />
+                            <Label for="ID">  </Label>
+                            <Input type="number" id="ID" onChange={this.setId} />
                         </FormGroup>
                         <FormGroup>
-                            <Label for="id"> Tipo de Documento* </Label>
-                            <select className="form-select" id="documentType" onChange={this.setDocumentType} arial-Label="Default select example">
+                            <Label for="ID"> Tipo de Documento* </Label>
+                            <select className="form-select" id="tipoDocumento" onChange={this.setTipoDocumento} arial-Label="Default select example">
                                 <option defaultValue selected disabled> Elige una opcion</option>
                                 <option value='Cc'> Cedula de Ciudadania </option>
                                 <option value='Ti'> Tarjeta de identidad </option>
                             </select>
                         </FormGroup>
                         <FormGroup>
-                            <Label for="id"> Numero de documento* </Label>
-                            <Input type="text" id="Document" onChange={this.setDocument} />
+                            <Label for="ID"> Numero de documento* </Label>
+                            <Input type="text" id="numDocumento" onChange={this.setNumDocumento} />
                         </FormGroup>
                         <FormGroup>
-                            <Label for="id"> Correo Institucional* </Label>
-                            <Input type="text" id="user" onChange={this.setUser} />
+                            <Label for="ID"> Correo Institucional* </Label>
+                            <Input type="text" id="correoInstitucional" onChange={this.setCorreoInstitucional} />
                         </FormGroup>
                         <FormGroup>
-                            <Label for="id"> Nombres* </Label>
-                            <Input type="text" id="name" onChange={this.setName} />
+                            <Label for="ID"> Nombres* </Label>
+                            <Input type="text" id="nombre" onChange={this.setNombre} />
                         </FormGroup>
                         <FormGroup>
-                            <Label for="id"> Apellidos </Label>
-                            <Input type="text" id="lastName" onChange={this.setLastName} />
+                            <Label for="ID"> Apellidos </Label>
+                            <Input type="text" id="apellido" onChange={this.setApellido} />
                         </FormGroup>
                         <FormGroup>
-                            <Label for="id"> Rol* </Label>
-                            <select className="form-select" id="rol" onChange={this.setRol}>
+                            <Label for="ID"> Rol* </Label>
+                            <select className="form-select" id="cargo" onChange={this.setCargo}>
                                 <option defaultValue selected disabled>Elige una opcion</option>
                                 <option value='Admin'> Administrador </option>
                                 <option value='Evaluador'> Evaluador </option>
                             </select>
                         </FormGroup>
                         <FormGroup>
-                            <Label for="id"> Contraseña* </Label>
-                            <Input type="password" id="pass" onChange={this.setPass} />
+                            <Label for="ID"> Contraseña* </Label>
+                            <Input type="password" id="password" onChange={this.setPassword} />
                         </FormGroup>
                         <FormGroup>
-                            <Label for="id"> Titulo* </Label>
-                            <Input type="text" id="Title" onChange={this.setTitle} />
+                            <Label for="ID"> Titulo* </Label>
+                            <Input type="text" id="perfilCargo" onChange={this.setPerfilCargo} />
                         </FormGroup>
                         <FormGroup>
-                            <Label for="id"> Area* </Label>
-                            <Input type="id" id="titleArea" onChange={this.setTitleArea} />
+                            <Label for="ID"> Area* </Label>
+                            <Input type="text" id="areaCargo" onChange={this.setAreaCargo} />
                         </FormGroup>
                     </ModalBody>
                     
                     <ModalFooter>
-                        <Button color="primary" onClick={this.agregarUsuario}> Agregar </Button>
+                        <Button color="ID" onClick={this.agregarUsuario}> Agregar </Button>
                         <Button color="secondary" onClick={this.cerrarModalCrear}>Cerrar</Button>
                     </ModalFooter>
                 </Modal>
@@ -448,60 +448,75 @@ class Users extends React.Component {
                     </ModalHeader>
                     <ModalBody>
                         <FormGroup>
-                            <Label for="id" > Id: </Label>
-                            <Input type="number" id="id" onChange={this.setId} value={this.state.users.id.nuevo} />
+                            <Label for="ID" > Id: </Label>
+                            <Input type="number" id="ID" onChange={this.setId} value={this.state.users.ID.nuevo} />
                         </FormGroup>
                         <FormGroup>
-                            <Label for="id" > Tipo de Documento</Label>
-                            <select className="form-select" id="documentType" onChange={this.documentType} defaultValue={this.state.users.documentType} aria-label="Default select example">
-                                <option > Elige una opcion </option>
+                            <Label for="ID" > Tipo de Documento</Label>
+                            <select className="form-select" id="tipoDocumento" onChange={this.setTipoDocumento} defaultValue={this.state.users.tipoDocumento} aria-label="Default select example" > 
+                                <option> Elige una opcion </option>
                                 {
-                                    this.state.users.documentType === 'Cc' ?
+                                    this.state.users.tipoDocumento === 'Cc' ?
                                     <option defaultValue value='Cc'> Cedula de Ciudadania </option>
                                     :
                                     <option value='Cc'> Cedula de Ciudadania </option>
                                 }
 
                                 {
-                                    this.state.users.documentType === 'Ti' ?
+                                    this.state.users.tipoDocumento === 'Ti' ?
                                     <option defaultValue value='Ti'> Tarjeta de identidad </option>
                                     :
                                     <option value='Ti'> Tarjeta de identidad </option>
                                 }
-                                    
-                            </select>  
+                            </select>
                         </FormGroup>
                         <FormGroup>
-                            <Label for="id" > Numero de Documento: </Label>
-                            <Input type="text" id="Document" onChange={this.setDocument} value={this.state.users.Document} />
+                            <Label for="ID" > Numero de Documento: </Label>
+                            <Input type="text" id="numDocumento" onChange={this.setNumDocumento} value={this.state.users.numDocumento} />
                         </FormGroup>
                         <FormGroup>
-                            <Label for="id" > Correo: </Label>
-                            <Input type="text" id="user" onChange={this.setUser} value={this.state.users.user} />
+                            <Label for="ID" > Correo: </Label>
+                            <Input type="text" id="correoInstitucional" onChange={this.setCorreoInstitucional} value={this.state.users.correoInstitucional} />
                         </FormGroup>
                         <FormGroup>
-                            <Label for="id" > Nombres: </Label>
-                            <Input type="text" id="name" onChange={this.setName} value={this.state.users.name} />
+                            <Label for="ID" > Nombres: </Label>
+                            <Input type="text" id="nombre" onChange={this.setNombre} value={this.state.users.nombre} />
                         </FormGroup>
                         <FormGroup>
-                            <Label for="id" > Apellidos: </Label>
-                            <Input type="text" id="lastName" onChange={this.setLastName} value={this.state.users.lastName} />
+                            <Label for="ID" > Apellidos: </Label>
+                            <Input type="text" id="apellido" onChange={this.setApellido} value={this.state.users.apellido} />
                         </FormGroup>
                         <FormGroup>
-                            <Label for="id" > Rol: </Label>
-                            <Input type="text" id="rol" onChange={this.setRol} value={this.state.users.rol} />
+                            <Label for="ID" > Rol: </Label>
+                            <select className="form-select" id="cargo" onChange={this.setCargo} defaultValue={this.state.users.cargo} aria-label="Default select example" >
+                                <option disabled>Elige una opcion</option>
+
+                                {
+                                    this.state.users.cargo === 'Admin' ?
+                                    <option defaultValue value='Admin'> Administrador </option>
+                                    :
+                                    <option value='Admin'> Administrador </option>
+                                }
+
+                                {
+                                    this.state.users.cargo === 'Evaluador' ?
+                                    <option defaultValue value='Evaluador'> Evaluador </option>
+                                    :
+                                    <option value='Evaluador'> Evaluador </option>
+                                }
+                            </select>
                         </FormGroup>
                         <FormGroup>
-                            <Label for="id" > Contraseña: </Label>
-                            <Input type="text" id="pass" onChange={this.setPass} value={this.state.users.pass} />
+                            <Label for="ID" > Contraseña: </Label>
+                            <Input type="text" id="password" onChange={this.setPassword} value={this.state.users.password} />
                         </FormGroup>
                         <FormGroup>
-                            <Label for="id" > Titulo: </Label>
-                            <Input type="text" id="Title" onChange={this.setTitle} value={this.state.users.Title} />
+                            <Label for="ID" > Titulo: </Label>
+                            <Input type="text" id="perfilCargo" onChange={this.setPerfilCargo} value={this.state.users.perfilCargo} />
                         </FormGroup>
                         <FormGroup>
-                            <Label for="id" > titleArea: </Label>
-                            <Input type="text" id="titleArea" onChange={this.setTitleArea} value={this.state.users.titleArea} />
+                            <Label for="ID" > titleArea: </Label>
+                            <Input type="text" id="areaCargo" onChange={this.setAreaCargo} value={this.state.users.areaCargo} />
                         </FormGroup>
                         <ModalFooter>
                             <Button color="primary" onClick={this.editarUsers}>Aceptar</Button>

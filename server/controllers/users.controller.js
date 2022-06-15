@@ -2,24 +2,23 @@
 
 //Agregar usuario
 exports.postUsers = (connection, req, res) => {
-    let id = req.body.id;
-    let documentType = req.body.documentType;
-    let Document = req.body.Document;
-    let user = req.body.user;
-    let name = req.body.name;
-    let lastName = req.body.lastName;
-    let rol = req.body.rol;
-    let pass = req.body.pass;
-    let Title = req.body.Title;
-    let titleArea = req.body.titleArea;
+    let ID = req.body.ID;
+    let correoInstitucional = req.body.correoInstitucional;
+    let password = req.body.password;
+    let tipoDocumento = req.body.tipoDocumento;
+    let numDocumento = req.body.numDocumento;
+    let nombre = req.body.nombre;
+    let apellido = req.body.apellido;
+    let cargo = req.body.cargo;
+    let areaCargo = req.body.areaCargo;
+    let perfilCargo = req.body.perfilCargo;
 
 
-    connection.query('INSERT INTO users(id, documentType, Document, user, name, lastName, rol, pass, Title, titleArea)' +
+    connection.query('INSERT INTO Usuario_Funcionario (ID, correoInstitucional, password, tipoDocumento, numDocumento, nombre, apellido, cargo, areaCargo, perfilCargo)' +
     'VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', [
-        id, documentType, Document, user, name, lastName, rol, pass, Title, titleArea
+        ID, correoInstitucional, password, tipoDocumento, numDocumento, nombre, apellido, cargo, areaCargo, perfilCargo
     ], (err, results, fields) =>{
         if (err) {
-            console.log(err);
             res.status(500).send('Ocurrio un error')
         } else {
             res.status(200).send(results);
@@ -31,7 +30,7 @@ exports.postUsers = (connection, req, res) => {
 
 //Obtener todos usuarios
 exports.getUsers = (connection, req, res) => {
-    connection.query('SELECT * FROM users', 
+    connection.query('SELECT * FROM Usuario_Funcionario', 
     (err, results, fields) => {
         if (err) {
             console.log(err);
@@ -40,32 +39,32 @@ exports.getUsers = (connection, req, res) => {
             let usersArreglo = [];
 
             for (let i = 0; i < results.length; i++) {
-                let id = {
-                    original: results[i].id,
-                    nuevo: results[i].id
+                let ID = {
+                    original: results[i].ID,
+                    nuevo: results[i].ID
                 };
-                let documentType = results[i].documentType;
-                let Document = results[i].Document;
-                let user = results[i].user;
-                let name = results[i].name;
-                let lastName = results[i].lastName;
-                let rol = results[i].rol;
-                let pass = results[i].pass;
-                let Title = results[i].Title;
-                let titleArea = results[i].titleArea;
+                let correoInstitucional = results[i].correoInstitucional;
+                let password = results[i].password;
+                let tipoDocumento = results[i].tipoDocumento;
+                let numDocumento = results[i].numDocumento;
+                let nombre = results[i].nombre;
+                let apellido = results[i].apellido;
+                let cargo = results[i].cargo;
+                let areaCargo = results[i].areaCargo;
+                let perfilCargo = results[i].perfilCargo;
 
 
                 usersArreglo.push({
-                    id,
-                    documentType,
-                    Document,
-                    user,
-                    name,
-                    lastName,
-                    rol,
-                    pass,
-                    Title,
-                    titleArea
+                    ID,
+                    correoInstitucional,
+                    password,
+                    tipoDocumento,
+                    numDocumento,
+                    nombre,
+                    apellido,
+                    cargo,
+                    areaCargo,
+                    perfilCargo
                 });
             }
 
@@ -76,24 +75,24 @@ exports.getUsers = (connection, req, res) => {
 
 //Actualizar Usuarios
 exports.putUsers = (connection, req, res) => {
-    let id = req.body.id;
+    let ID = req.body.ID;
     let nuevoid = req.body.nuevoid;
-    let documentType = req.body.documentType;
-    let Document = req.body.Document;
-    let user = req.body.user;
-    let name = req.body.name;
-    let lastName = req.body.lastName;
-    let rol = req.body.rol;
-    let pass = req.body.pass;
-    let Title = req.body.Title;
-    let titleArea = req.body.titleArea;
+    let correoInstitucional = req.body.correoInstitucional;
+    let password = req.body.password;
+    let tipoDocumento = req.body.tipoDocumento;
+    let numDocumento = req.body.numDocumento;
+    let nombre = req.body.nombre;
+    let apellido = req.body.apellido;
+    let cargo = req.body.cargo;
+    let areaCargo = req.body.areaCargo;
+    let perfilCargo = req.body.perfilCargo;
 
-    connection.query('UPDATE users SET id = ?, documentType = ?, Document = ?, user = ?, name = ?, lastName = ?, rol = ?, pass = ?, Title = ?, titleArea = ? WHERE id = ?'
+    connection.query('UPDATE Usuario_Funcionario SET ID = ?, correoInstitucional = ?, password = ?, tipoDocumento = ?, numDocumento = ?, nombre = ?, apellido = ?, cargo = ?, areaCargo = ?, perfilCargo = ? WHERE ID = ?'
     , [
-        nuevoid, documentType, Document, user, name, lastName, rol, pass, Title, titleArea, id
+        nuevoid, correoInstitucional, password, tipoDocumento, numDocumento, nombre, apellido, cargo, areaCargo, perfilCargo, ID
     ], (err, results, fields) => {
         if (err) {
-            res.status(500).send('Ocurrió un error al intentar actualizar los trabajadores.');
+            res.status(500).send('Ocurrió un error al intentar actualizar los usuarios.');
         } else {
             res.status(200).send(results);
         }
@@ -102,9 +101,9 @@ exports.putUsers = (connection, req, res) => {
 }
 
 exports.deleteUsers = (connection, req, res) => {
-    let id = req.query.id;
+    let ID = req.query.ID;
 
-    connection.query('DELETE FROM users WHERE id = ?', [id], 
+    connection.query('DELETE FROM Usuario_Funcionario WHERE ID = ?', [ID], 
     (err, results, fields) => {
         if (err) {
             console.log(err);
