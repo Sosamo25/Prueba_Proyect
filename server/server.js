@@ -6,6 +6,9 @@ const app = express();
 
 //Importar rutas
 const rUsers = require('./routes/users.routes.js');
+const rColegio = require('./routes/colegio.routes.js');
+const rPrograma = require('./routes/programas.routes.js');
+
 
 
 
@@ -31,6 +34,10 @@ app.use(express.json())
 
 // Routes
 rUsers(app, connection);
+rColegio(app, connection);
+rPrograma(app, connection);
+
+
 
 
 // Iniciando el servidor

@@ -2,6 +2,7 @@ module.exports = (app, connection) => {
 
 const cUsers = require('../controllers/users.controller.js');
 
+
 app.route('/users')
 
 // Obtener todos los usuarios
