@@ -2,6 +2,18 @@ import axios from 'axios';
 
 class UsuariosService {
 
+
+    async LogIn(correoInstitucional, password) {
+        return await axios.get('http://localhost:3001/users',
+        {
+            params:
+            {
+                correoInstitucional: correoInstitucional,
+                password: password
+            }
+        }
+        )}
+
     async postUsers (ID, correoInstitucional, password, tipoDocumento, numDocumento, nombre, apellido, cargo, areaCargo, perfilCargo) {
         return await axios.post('http://localhost:3001/users', 
         {

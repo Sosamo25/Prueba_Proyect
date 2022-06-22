@@ -14,7 +14,7 @@ import UsuariosService from '../../services/UsuariosService/UsuariosService';
 class Users extends React.Component {
 
     state = {
-        Losusers: [],
+        LosUsers: [],
 
         //Modals
         modalCrear: false,
@@ -45,6 +45,7 @@ class Users extends React.Component {
     componentDidMount() {
         UsuariosService.getUsers()
             .then(datos => {
+                console.log(datos.data);
                 this.setState(
                     {
                         Losusers: datos.data
@@ -349,7 +350,7 @@ class Users extends React.Component {
 
                             <tbody>
                                 {
-                                    this.state.Losusers.map((usuario, id) =>(
+                                    this.state.LosUsers.map((usuario, id) =>(
                                         <tr key={id}>
                                             <td>{usuario.ID.original}</td>
                                             <td>{usuario.tipoDocumento}</td>

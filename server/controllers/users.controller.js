@@ -1,5 +1,63 @@
 
 
+//Login 
+exports.logIn = (connection, req, res) => {
+
+    let correoInstitucional = req.query.correoInstitucional;
+    let password = req.query.password;
+
+
+    connection.query('SELECT * FROM Usuario_Funcionario WHERE correoInstitucional = ? AND password = ?', [
+        correoInstitucional, password
+    ], (err, results, fields) => {
+        if (err) {
+            res.status(500).send('Ocurrio un error');
+        } else {
+            if (results[0] != undefined) {
+                res.status(200).send(
+                    {
+                        login: true,
+                        ID: results[0].ID,
+                        correoInstitucional: results[0].correoInstitucional,
+                        password: results[0].password,
+                        tipoDocumento: results[0].tipoDocumento,
+                        numDocumento: results.numDocumento,
+                        nombre: results[0].nombre,
+                        apellido: results[0].apellido,
+                        cargo: results[0].cargo,
+                        areaCargo: results[0].areaCargo,
+                        perfilCargo: results[0].perfilCargo
+                    }
+                )
+            } else {
+                res.status(200).send(
+                    {
+                        login: false
+                    }
+                )
+            }
+        }
+    })
+}
+
+
+//Obtener contraseña
+exports.getContrasena = (connection, req, res) => {
+    let correoInstitucional = req.query.correoInstitucional;
+
+    connection.query('SELECT password FROM Usuario_Funcionario WHERE correoInstitucional = ?', [
+        correoInstitucional
+    ], (err, results, fields) => {
+        if (err) {
+            console.log(err);
+            res.status(500).send('Ocurrio un error');
+        } else {
+            res.status(200).send(results);
+        }
+    })
+}
+
+
 //Agregar usuario
 exports.postUsers = (connection, req, res) => {
     let ID = req.body.ID;

@@ -5,6 +5,7 @@ const cUsers = require('../controllers/users.controller.js');
 
 app.route('/users')
 
+
 // Obtener todos los usuarios
 .get((req, res)=> {
     cUsers.getUsers(connection, req, res);
@@ -23,6 +24,11 @@ app.route('/users')
 .delete((req, res) => {
     cUsers.deleteUsers(connection, req, res);
 })
+
+app.route('users-password')
+
+
+
 
 
 }

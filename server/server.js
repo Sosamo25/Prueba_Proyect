@@ -8,6 +8,7 @@ const app = express();
 const rUsers = require('./routes/users.routes.js');
 const rColegio = require('./routes/colegio.routes.js');
 const rPrograma = require('./routes/programas.routes.js');
+const rTest = require('./routes/test.routes.js');
 
 
 
@@ -36,6 +37,7 @@ app.use(express.json())
 rUsers(app, connection);
 rColegio(app, connection);
 rPrograma(app, connection);
+rTest(app, connection);
 
 
 
