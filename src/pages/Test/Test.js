@@ -157,8 +157,6 @@ class Test extends React.Component {
         let colegio = this.state.tests.colegio;
         let estado = this.state.tests.estado;
 
-        
-
         if ( nombreTest === '' || ciudad === '' || colegio === ''
         || estado === '') {
             alert('Por favor digita todos los campos obligatorios para agregar el colegio.')
@@ -186,7 +184,7 @@ class Test extends React.Component {
                     this.cerrarModalCrear();
                 })
                 .catch(error => {
-                    alert('Ocurrió un error al intentar crear un test')
+                    alert('Ocurrió un error al intentar crear un testito')
                 })
         }
     };
@@ -293,6 +291,7 @@ class Test extends React.Component {
                     <ModalBody>
                         <FormGroup>
                             <Label for="codigoUnico"> Codigo </Label>
+                            <Input type="text" id="codigoUnico" onChange={this.setCodigoUnico}/>
                         </FormGroup>
                         <FormGroup>
                             <Label for="codigoUnico"> Nombre test </Label>
@@ -318,8 +317,8 @@ class Test extends React.Component {
                             <Label for="codigoUnico"> Estado </Label>
                             <select className="form-select" id="estado" onChange={this.setEstado}>
                             <option defaultValue selected disabled>Elige una opcion</option>
-                                <option value='A'> Abierto </option>
-                                <option value='C'> Cerrado </option>
+                                <option value='1'> Abierto </option>
+                                <option value='2'> Cerrado </option>
                             </select>
                         </FormGroup>
                     </ModalBody>

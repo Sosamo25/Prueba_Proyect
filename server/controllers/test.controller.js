@@ -3,14 +3,7 @@
 //Agregar 
 exports.postTest = (connection, req, res) => {
 
-    const  generateRandomString = (num) => {
-        const characters ='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-        let result1= Math.random().toString(36).substring(0,num);       
-
-        return result1;
-    }
-
-    let codigoUnico = generateRandomString;
+    let codigoUnico = req.body.codigoUnico;
     let nombreTest = req.body.nombreTest;
     let ciudad = req.body.ciudad;
     let colegio = req.body.colegio;
@@ -21,6 +14,7 @@ exports.postTest = (connection, req, res) => {
         codigoUnico, nombreTest, ciudad, colegio, estado
     ], (err, results, fields) => {
         if (err) {
+            console.log(err);
             res.status(500).send('Ocurrio un error')
         } else {
             res.status(200).send(results);
