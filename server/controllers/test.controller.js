@@ -3,15 +3,16 @@
 //Agregar 
 exports.postTest = (connection, req, res) => {
 
+    let fechaDeCreacion = req.body.fechaDeCreacion;
     let codigoUnico = req.body.codigoUnico;
     let nombreTest = req.body.nombreTest;
     let ciudad = req.body.ciudad;
     let colegio = req.body.colegio;
     let estado = req.body.estado;
 
-    connection.query('INSERT INTO test (codigoUnico, nombreTest, ciudad, colegio, estado)' + 
-    'VALUES (?, ?, ?, ?, ?)', [
-        codigoUnico, nombreTest, ciudad, colegio, estado
+    connection.query('INSERT INTO Test (fechaDeCreacion, codigoUnico, nombreTest, ciudad, colegio, estado)' + 
+    'VALUES (?, ?, ?, ?, ?, ?)', [
+        fechaDeCreacion, codigoUnico, nombreTest, ciudad, colegio, estado
     ], (err, results, fields) => {
         if (err) {
             console.log(err);
@@ -34,6 +35,7 @@ exports.getTest = (connection, req, res) => {
             let testArreglo = [];
 
             for (let i = 0; i < results.length; i++) {
+                let fechaDeCreacion = results[i].fechaDeCreacion;
                 let codigoUnico = results[i].codigoUnico;
                 let nombreTest = results[i].nombreTest;
                 let ciudad = results[i].ciudad;
@@ -42,6 +44,7 @@ exports.getTest = (connection, req, res) => {
 
 
                 testArreglo.push({
+                    fechaDeCreacion,
                     codigoUnico,
                     nombreTest,
                     ciudad,
@@ -49,11 +52,13 @@ exports.getTest = (connection, req, res) => {
                     estado
                 });
             }
-
+            
             res.status(200).send(testArreglo);
         }
     })
 }
+
+
 
 //Actualizar Test
 exports.putTest = (connection, req, res) => {

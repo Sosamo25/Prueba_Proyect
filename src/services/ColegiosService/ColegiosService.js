@@ -21,6 +21,7 @@ class ColegiosService {
         return await axios.get('http://localhost:3001/colegios')
     }
 
+
     async putColegios(codigoDane, nuevocodDane, nombre, clasificacion, ciudad, correoInstitucional, numeroTelefono, nombreRepresentante) {
         return await axios.put('http://localhost:3001/colegios',
         {

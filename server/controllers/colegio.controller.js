@@ -67,6 +67,7 @@ exports.getColegio = (connection, req, res) => {
 }
 
 
+
 //Actualizar colegio
 exports.putColegio = (connection, req, res) => {
     let codigoDane = req.body.codigoDane;

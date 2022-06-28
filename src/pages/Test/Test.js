@@ -36,6 +36,7 @@ class Test extends React.Component {
     componentDidMount() {
         TestService.getTest()
             .then(datos => {
+                console.log(datos);
                 this.setState(
                     {
                         Lostest: datos.data
@@ -47,6 +48,8 @@ class Test extends React.Component {
                 alert('Ocurrio un error al intentar obtener los test creados')
             })
     }
+
+    
 
 
     //Modals Crear
@@ -151,7 +154,14 @@ class Test extends React.Component {
 
     agregarTest = () => {
 
-        let codigoUnico = this.state.tests.codigoUnico;
+
+            let date = new Date();
+            let year = date.getFullYear();
+            let month = date.getMonth() + 1;
+            let day = date.getDate();
+
+        let fechaDeCreacion = year + "/" + month + "/" + day;
+        let codigoUnico = Math.random().toString(36).slice(2);
         let nombreTest = this.state.tests.nombreTest;
         let ciudad = this.state.tests.ciudad;
         let colegio = this.state.tests.colegio;
@@ -161,7 +171,7 @@ class Test extends React.Component {
         || estado === '') {
             alert('Por favor digita todos los campos obligatorios para agregar el colegio.')
         } else {
-            TestService.postTest(codigoUnico, nombreTest, ciudad, colegio, estado)
+            TestService.postTest(fechaDeCreacion, codigoUnico, nombreTest, ciudad, colegio, estado)
                 .then(datos => {
                     console.log(datos);
                     alert('¡Se ha creado el test con exito!');
@@ -169,6 +179,7 @@ class Test extends React.Component {
                     let nuevoLostest = this.state.Lostest;
                     nuevoLostest.push(
                         {
+                            fechaDeCreacion,
                             codigoUnico,
                             nombreTest,
                             ciudad,
@@ -250,6 +261,7 @@ class Test extends React.Component {
                         <Table className="table table-hover">
                             <thead className="table-dark">
                                 <tr>
+                                    <th>Fecha de Creacion</th>
                                     <th>Codigo</th>
                                     <th>Nombre test</th>
                                     <th>Colegio</th>
@@ -262,6 +274,7 @@ class Test extends React.Component {
                                 {
                                     this.state.Lostest.map((test, cod) =>(
                                         <tr key={cod}>
+                                            <td>{test.fechaDeCreacion}</td>
                                             <td>{test.codigoUnico}</td>
                                             <td>{test.nombreTest}</td>
                                             <td>{test.colegio}</td>
@@ -291,7 +304,7 @@ class Test extends React.Component {
                     <ModalBody>
                         <FormGroup>
                             <Label for="codigoUnico"> Codigo </Label>
-                            <Input type="text" id="codigoUnico" onChange={this.setCodigoUnico}/>
+                            
                         </FormGroup>
                         <FormGroup>
                             <Label for="codigoUnico"> Nombre test </Label>
@@ -299,10 +312,10 @@ class Test extends React.Component {
                         </FormGroup>
                         <FormGroup>
                             <Label for="codigoUnico"> Colegio </Label>
-                            <select className="form-select" id="colegio" onChange={this.setColegio}>
-                            <option defaultValue selected disabled>Elige una opcion</option>
-                                <option value='Salesiano'> Salesiano </option>
-                                <option value='Caldas'> Caldas </option>  
+                            <select className="form-select" id="colegio" onChange={this.setColegio} >
+                            <option disabled>Elige una opcion</option>
+                                
+                                
                             </select>
                         </FormGroup>
                         <FormGroup>

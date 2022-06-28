@@ -3,9 +3,10 @@ import axios from 'axios';
 
 class TestService {
 
-    async postTest (codigoUnico, nombreTest, ciudad, colegio, estado){
+    async postTest (fechaDeCreacion, codigoUnico, nombreTest, ciudad, colegio, estado){
         return await axios.post('http://localhost:3001/test',
         {
+            fechaDeCreacion,
             codigoUnico,
             nombreTest,
             ciudad,
